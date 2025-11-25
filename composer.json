@@ -1,0 +1,59 @@
+{
+    "name": "carllee1983/ecpay-einvoice-b2b",
+    "description": "ECPay e-Invoice B2B API wrapper with DTO-based operations, Laravel coordinator, and sandbox-ready docs",
+    "keywords": [
+        "ecpay",
+        "einvoice",
+        "b2b",
+        "laravel",
+        "dto",
+        "taiwan",
+        "sandbox"
+    ],
+    "homepage": "https://github.com/CarlLee1983/ecpay-einvoice-B2B",
+    "support": {
+        "issues": "https://github.com/CarlLee1983/ecpay-einvoice-B2B/issues",
+        "source": "https://github.com/CarlLee1983/ecpay-einvoice-B2B"
+    },
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carl",
+            "email": "carllee0520@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "ecPay\\eInvoiceB2B\\": "src"
+        }
+    },
+    "require": {
+        "php": "^8.3",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^8.0 || ^9.0",
+        "phpunit/phpunit": "^10.5",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ecPay\\eInvoiceB2B\\Laravel\\EcPayServiceProvider"
+            ],
+            "aliases": {
+                "EcPayInvoice": "ecPay\\eInvoiceB2B\\Laravel\\Facades\\EcPayInvoice",
+                "EcPayQuery": "ecPay\\eInvoiceB2B\\Laravel\\Facades\\EcPayQuery"
+            }
+        }
+    }
+}

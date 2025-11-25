@@ -1,0 +1,179 @@
+<?php
+
+declare(strict_types=1);
+
+namespace ecPay\eInvoiceB2B\Laravel;
+
+use ecPay\eInvoiceB2B\EcPayClient;
+use ecPay\eInvoiceB2B\Factories\OperationFactory;
+use ecPay\eInvoiceB2B\Factories\OperationFactoryInterface;
+use ecPay\eInvoiceB2B\Laravel\Services\OperationCoordinator;
+use ecPay\eInvoiceB2B\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
+
+/**
+ * Laravel Service Provider：負責載入設定並綁定 Service Container。
+ *
+ * 根據綠界 B2B 電子發票 API 介接注意事項：
+ * - 僅支援 HTTPS (443 port) 連線
+ * - 支援 TLS 1.1 以上加密通訊協定
+ *
+ * @see https://developers.ecpay.com.tw/?p=14825
+ */
+class EcPayServiceProvider extends ServiceProvider
+{
+    /**
+     * 註冊服務。
+     */
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../../config/ecpay-einvoice-b2b.php', 'ecpay-einvoice-b2b');
+
+        $this->configureRequest();
+        $this->registerFactory();
+        $this->registerClient();
+        $this->registerOperationBindings();
+        $this->registerCoordinator();
+    }
+
+    /**
+     * 根據設定檔配置 Request 類別。
+     */
+    protected function configureRequest(): void
+    {
+        $verifySsl = $this->app['config']->get('ecpay-einvoice-b2b.verify_ssl', true);
+        Request::setVerifySsl((bool) $verifySsl);
+    }
+
+    /**
+     * 啟動服務（提供 config publish）。
+     */
+    public function boot()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../../config/ecpay-einvoice-b2b.php' => $this->configPath('ecpay-einvoice-b2b.php'),
+            ], 'ecpay-einvoice-b2b-config');
+        }
+    }
+
+    /**
+     * 綁定工廠實例。
+     */
+    protected function registerFactory(): void
+    {
+        $this->app->singleton(OperationFactoryInterface::class, function (Application $app) {
+            $config = $app['config']->get('ecpay-einvoice-b2b', []);
+            $factoryConfig = $config['factory'] ?? [];
+
+            $factory = new OperationFactory([
+                'merchant_id' => (string) ($config['merchant_id'] ?? ''),
+                'hash_key' => (string) ($config['hash_key'] ?? ''),
+                'hash_iv' => (string) ($config['hash_iv'] ?? ''),
+                'aliases' => $factoryConfig['aliases'] ?? [],
+            ]);
+
+            foreach ($factoryConfig['initializers'] ?? [] as $initializer) {
+                $callable = $this->resolveInitializer($initializer, $app);
+                if ($callable !== null) {
+                    $factory->addInitializer($callable);
+                }
+            }
+
+            return $factory;
+        });
+
+        $this->app->alias(OperationFactoryInterface::class, 'ecpay-b2b.factory');
+    }
+
+    /**
+     * 綁定 EcPayClient。
+     */
+    protected function registerClient(): void
+    {
+        $this->app->singleton(EcPayClient::class, function (Application $app) {
+            $config = $app['config']->get('ecpay-einvoice-b2b', []);
+
+            return new EcPayClient(
+                (string) ($config['server'] ?? ''),
+                (string) ($config['hash_key'] ?? ''),
+                (string) ($config['hash_iv'] ?? '')
+            );
+        });
+
+        $this->app->alias(EcPayClient::class, 'ecpay-b2b.client');
+    }
+
+    /**
+     * 綁定協調器。
+     */
+    protected function registerCoordinator(): void
+    {
+        $this->app->singleton(OperationCoordinator::class, function (Application $app) {
+            return new OperationCoordinator(
+                $app->make(OperationFactoryInterface::class),
+                $app->make(EcPayClient::class)
+            );
+        });
+
+        $this->app->alias(OperationCoordinator::class, 'ecpay-b2b.coordinator');
+    }
+
+    /**
+     * 將設定檔內的便利別名註冊至容器。
+     */
+    protected function registerOperationBindings(): void
+    {
+        $bindings = $this->app['config']->get('ecpay-einvoice-b2b.bindings', []);
+
+        foreach ($bindings as $name => $alias) {
+            $serviceId = strpos($name, 'ecpay-b2b.') === 0 ? $name : 'ecpay-b2b.' . $name;
+
+            $this->app->bind($serviceId, function (Application $app) use ($alias) {
+                /** @var OperationFactoryInterface $factory */
+                $factory = $app->make(OperationFactoryInterface::class);
+
+                return $factory->make((string) $alias);
+            });
+        }
+    }
+
+    /**
+     * 將設定值轉為可呼叫的初始化邏輯。
+     *
+     * @param mixed $initializer
+     * @param Application $app
+     * @return callable|null
+     */
+    protected function resolveInitializer($initializer, Application $app): ?callable
+    {
+        if (is_string($initializer) && class_exists($initializer)) {
+            $callable = $app->make($initializer);
+            if (is_callable($callable)) {
+                return $callable;
+            }
+        }
+
+        if (is_callable($initializer)) {
+            return $initializer;
+        }
+
+        return null;
+    }
+
+    /**
+     * 取得 config 儲存路徑，在非 Laravel 環境提供後援。
+     *
+     * @param string $file
+     * @return string
+     */
+    protected function configPath(string $file): string
+    {
+        if (function_exists('config_path')) {
+            return config_path($file);
+        }
+
+        return $this->app->basePath('config/' . $file);
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="ECPay eInvoice B2B test">
+            <directory>test</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="SERVER" value="https://einvoice-stage.ecpay.com.tw"/>
+        <env name="MERCHANT_ID" value="2000132"/>
+        <env name="HASH_KEY" value="ejCk326UnaZWKisg"/>
+        <env name="HASH_IV" value="q9jcZX8Ib9LM8wYk"/>
+        <env name="UNIFIED_BUSINESS_NO" value="97025978"/>
+    </php>
+</phpunit>
