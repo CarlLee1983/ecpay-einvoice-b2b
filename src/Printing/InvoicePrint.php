@@ -1,0 +1,111 @@
+<?php
+
+declare(strict_types=1);
+
+namespace ecPay\eInvoiceB2B\Printing;
+
+use ecPay\eInvoiceB2B\Content;
+use Exception;
+
+/**
+ * 發票列印 API。
+ *
+ * 特店可使用此 API 取得發票列印網址。
+ *
+ * @see https://developers.ecpay.com.tw/?p=14993
+ */
+class InvoicePrint extends Content
+{
+    /**
+     * API endpoint path.
+     *
+     * @var string
+     */
+    protected $requestPath = '/B2BInvoice/InvoicePrint';
+
+    /**
+     * Initialize request payload.
+     *
+     * @return void
+     */
+    protected function initContent()
+    {
+        $this->content['Data'] = [
+            'MerchantID' => $this->merchantID,
+            'InvoiceNumber' => '',
+            'InvoiceDate' => '',
+        ];
+    }
+
+    /**
+     * 設定發票號碼（必填）。
+     *
+     * @param string $invoiceNumber 發票號碼（10碼：2碼英文 + 8碼數字）
+     * @return self
+     */
+    public function setInvoiceNumber(string $invoiceNumber): self
+    {
+        $invoiceNumber = strtoupper(trim($invoiceNumber));
+
+        if (!preg_match('/^[A-Z]{2}\d{8}$/', $invoiceNumber)) {
+            throw new Exception('InvoiceNumber must be 2 letters followed by 8 digits (e.g., AB12345678).');
+        }
+
+        $this->content['Data']['InvoiceNumber'] = $invoiceNumber;
+
+        return $this;
+    }
+
+    /**
+     * 設定發票開立日期（必填）。
+     *
+     * @param string $date 格式為 yyyy-mm-dd
+     * @return self
+     */
+    public function setInvoiceDate(string $date): self
+    {
+        $date = trim($date);
+        $format = 'Y-m-d';
+        $dateTime = \DateTime::createFromFormat($format, $date);
+
+        if (!($dateTime && $dateTime->format($format) === $date)) {
+            throw new Exception('InvoiceDate must be in yyyy-mm-dd format.');
+        }
+
+        $this->content['Data']['InvoiceDate'] = $date;
+
+        return $this;
+    }
+
+    /**
+     * 驗證 payload。
+     *
+     * @return void
+     */
+    public function validation()
+    {
+        $this->validatorBaseParam();
+
+        // 驗證發票號碼
+        if (empty($this->content['Data']['InvoiceNumber'])) {
+            throw new Exception('InvoiceNumber cannot be empty.');
+        }
+
+        if (!preg_match('/^[A-Z]{2}\d{8}$/', $this->content['Data']['InvoiceNumber'])) {
+            throw new Exception('InvoiceNumber must be 2 letters followed by 8 digits.');
+        }
+
+        // 驗證發票日期
+        if (empty($this->content['Data']['InvoiceDate'])) {
+            throw new Exception('InvoiceDate cannot be empty.');
+        }
+
+        $format = 'Y-m-d';
+        $dateTime = \DateTime::createFromFormat($format, $this->content['Data']['InvoiceDate']);
+
+        if (!($dateTime && $dateTime->format($format) === $this->content['Data']['InvoiceDate'])) {
+            throw new Exception('InvoiceDate must be in yyyy-mm-dd format.');
+        }
+    }
+}
+
