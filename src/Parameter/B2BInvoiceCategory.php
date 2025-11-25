@@ -28,10 +28,10 @@ enum B2BInvoiceCategory: int
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 B2BInvoiceCategory::Sales */
-    public const SALES = 0;
+    public const int SALES = 0;
 
     /** @deprecated 請改用 B2BInvoiceCategory::Purchase */
-    public const PURCHASE = 1;
+    public const int PURCHASE = 1;
 
     /** @deprecated 請改用 B2BInvoiceCategory::cases() */
     public const VALID_CATEGORIES = [

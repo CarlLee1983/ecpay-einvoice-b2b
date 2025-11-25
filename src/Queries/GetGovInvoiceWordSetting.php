@@ -30,6 +30,7 @@ class GetGovInvoiceWordSetting extends Content
      *
      * @return void
      */
+    #[\Override]
     protected function initContent()
     {
         $this->content['Data'] = [
@@ -58,6 +59,7 @@ class GetGovInvoiceWordSetting extends Content
      *
      * @return void
      */
+    #[\Override]
     public function validation()
     {
         $this->validatorBaseParam();

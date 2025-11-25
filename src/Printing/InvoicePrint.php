@@ -28,6 +28,7 @@ class InvoicePrint extends Content
      *
      * @return void
      */
+    #[\Override]
     protected function initContent()
     {
         $this->content['Data'] = [
@@ -82,6 +83,7 @@ class InvoicePrint extends Content
      *
      * @return void
      */
+    #[\Override]
     public function validation()
     {
         $this->validatorBaseParam();

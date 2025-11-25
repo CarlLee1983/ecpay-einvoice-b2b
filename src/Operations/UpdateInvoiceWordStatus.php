@@ -31,6 +31,7 @@ class UpdateInvoiceWordStatus extends Content
      *
      * @return void
      */
+    #[\Override]
     protected function initContent()
     {
         $this->content['Data'] = [
@@ -116,6 +117,7 @@ class UpdateInvoiceWordStatus extends Content
      *
      * @return void
      */
+    #[\Override]
     public function validation()
     {
         $this->validatorBaseParam();

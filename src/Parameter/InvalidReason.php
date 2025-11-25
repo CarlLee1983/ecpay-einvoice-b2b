@@ -62,31 +62,31 @@ enum InvalidReason: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 InvalidReason::InvoiceError */
-    public const INVOICE_ERROR = '發票開立錯誤';
+    public const string INVOICE_ERROR = '發票開立錯誤';
 
     /** @deprecated 請改用 InvalidReason::SalesReturn */
-    public const SALES_RETURN = '銷貨退回';
+    public const string SALES_RETURN = '銷貨退回';
 
     /** @deprecated 請改用 InvalidReason::AllowanceError */
-    public const ALLOWANCE_ERROR = '折讓錯誤';
+    public const string ALLOWANCE_ERROR = '折讓錯誤';
 
     /** @deprecated 請改用 InvalidReason::AmountError */
-    public const AMOUNT_ERROR = '金額錯誤';
+    public const string AMOUNT_ERROR = '金額錯誤';
 
     /** @deprecated 請改用 InvalidReason::DuplicateIssue */
-    public const DUPLICATE_ISSUE = '重複開立';
+    public const string DUPLICATE_ISSUE = '重複開立';
 
     /** @deprecated 請改用 InvalidReason::BuyerDataError */
-    public const BUYER_DATA_ERROR = '買方資料錯誤';
+    public const string BUYER_DATA_ERROR = '買方資料錯誤';
 
     /** @deprecated 請改用 InvalidReason::ItemDataError */
-    public const ITEM_DATA_ERROR = '商品資料錯誤';
+    public const string ITEM_DATA_ERROR = '商品資料錯誤';
 
     /** @deprecated 請改用 InvalidReason::CustomerRequest */
-    public const CUSTOMER_REQUEST = '客戶要求作廢';
+    public const string CUSTOMER_REQUEST = '客戶要求作廢';
 
     /** @deprecated 請改用 InvalidReason::Other */
-    public const OTHER = '其他';
+    public const string OTHER = '其他';
 
     /** @deprecated 請改用 InvalidReason::cases() */
     public const COMMON_REASONS = [

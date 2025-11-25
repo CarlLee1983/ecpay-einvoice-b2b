@@ -23,7 +23,7 @@ class Request
     /**
      * 最低支援的 TLS 版本（TLS 1.1）。
      */
-    public const MIN_TLS_VERSION = CURL_SSLVERSION_TLSv1_1;
+    public const int MIN_TLS_VERSION = CURL_SSLVERSION_TLSv1_1;
 
     /**
      * The request url.

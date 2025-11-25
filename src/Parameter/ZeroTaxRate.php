@@ -26,10 +26,10 @@ enum ZeroTaxRate: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 ZeroTaxRate::NonCustomsExport */
-    public const NON_CUSTOMS_EXPORT = '1';
+    public const string NON_CUSTOMS_EXPORT = '1';
 
     /** @deprecated 請改用 ZeroTaxRate::CustomsExport */
-    public const CUSTOMS_EXPORT = '2';
+    public const string CUSTOMS_EXPORT = '2';
 
     /** @deprecated 請改用 ZeroTaxRate::cases() */
     public const VALID_TYPES = [

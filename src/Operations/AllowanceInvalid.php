@@ -33,6 +33,7 @@ class AllowanceInvalid extends Content
      *
      * @return void
      */
+    #[\Override]
     protected function initContent()
     {
         $this->content['Data'] = [
@@ -151,6 +152,7 @@ class AllowanceInvalid extends Content
      *
      * @return void
      */
+    #[\Override]
     public function validation()
     {
         $this->validatorBaseParam();

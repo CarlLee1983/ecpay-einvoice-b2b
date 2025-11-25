@@ -31,13 +31,13 @@ enum NotifyTarget: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 NotifyTarget::Customer */
-    public const CUSTOMER = 'C';
+    public const string CUSTOMER = 'C';
 
     /** @deprecated 請改用 NotifyTarget::Merchant */
-    public const MERCHANT = 'M';
+    public const string MERCHANT = 'M';
 
     /** @deprecated 請改用 NotifyTarget::All */
-    public const ALL = 'A';
+    public const string ALL = 'A';
 
     /** @deprecated 請改用 NotifyTarget::cases() */
     public const VALID_TARGETS = [

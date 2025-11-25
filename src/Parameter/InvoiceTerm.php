@@ -49,25 +49,25 @@ enum InvoiceTerm: int
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 InvoiceTerm::All */
-    public const ALL = 0;
+    public const int ALL = 0;
 
     /** @deprecated 請改用 InvoiceTerm::JanFeb */
-    public const JAN_FEB = 1;
+    public const int JAN_FEB = 1;
 
     /** @deprecated 請改用 InvoiceTerm::MarApr */
-    public const MAR_APR = 2;
+    public const int MAR_APR = 2;
 
     /** @deprecated 請改用 InvoiceTerm::MayJun */
-    public const MAY_JUN = 3;
+    public const int MAY_JUN = 3;
 
     /** @deprecated 請改用 InvoiceTerm::JulAug */
-    public const JUL_AUG = 4;
+    public const int JUL_AUG = 4;
 
     /** @deprecated 請改用 InvoiceTerm::SepOct */
-    public const SEP_OCT = 5;
+    public const int SEP_OCT = 5;
 
     /** @deprecated 請改用 InvoiceTerm::NovDec */
-    public const NOV_DEC = 6;
+    public const int NOV_DEC = 6;
 
     /** @deprecated 請改用 InvoiceTerm::cases() */
     public const VALID_TERMS = [

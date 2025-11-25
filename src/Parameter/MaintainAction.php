@@ -29,13 +29,13 @@ enum MaintainAction: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 MaintainAction::Add */
-    public const ADD = 'Add';
+    public const string ADD = 'Add';
 
     /** @deprecated 請改用 MaintainAction::Update */
-    public const UPDATE = 'Update';
+    public const string UPDATE = 'Update';
 
     /** @deprecated 請改用 MaintainAction::Delete */
-    public const DELETE = 'Delete';
+    public const string DELETE = 'Delete';
 
     /** @deprecated 請改用 MaintainAction::cases() */
     public const VALID_ACTIONS = [

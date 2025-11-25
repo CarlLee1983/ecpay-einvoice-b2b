@@ -49,25 +49,25 @@ enum UseStatus: int
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 UseStatus::All */
-    public const ALL = 0;
+    public const int ALL = 0;
 
     /** @deprecated 請改用 UseStatus::NotActivated */
-    public const NOT_ACTIVATED = 1;
+    public const int NOT_ACTIVATED = 1;
 
     /** @deprecated 請改用 UseStatus::InUse */
-    public const IN_USE = 2;
+    public const int IN_USE = 2;
 
     /** @deprecated 請改用 UseStatus::Disabled */
-    public const DISABLED = 3;
+    public const int DISABLED = 3;
 
     /** @deprecated 請改用 UseStatus::Suspended */
-    public const SUSPENDED = 4;
+    public const int SUSPENDED = 4;
 
     /** @deprecated 請改用 UseStatus::PendingReview */
-    public const PENDING_REVIEW = 5;
+    public const int PENDING_REVIEW = 5;
 
     /** @deprecated 請改用 UseStatus::ReviewRejected */
-    public const REVIEW_REJECTED = 6;
+    public const int REVIEW_REJECTED = 6;
 
     /** @deprecated 請改用 UseStatus::cases() */
     public const VALID_STATUSES = [

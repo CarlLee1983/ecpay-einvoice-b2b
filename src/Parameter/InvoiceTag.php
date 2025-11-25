@@ -66,34 +66,34 @@ enum InvoiceTag: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 InvoiceTag::Issue */
-    public const ISSUE = '1';
+    public const string ISSUE = '1';
 
     /** @deprecated 請改用 InvoiceTag::Invalid */
-    public const INVALID = '2';
+    public const string INVALID = '2';
 
     /** @deprecated 請改用 InvoiceTag::Reject */
-    public const REJECT = '3';
+    public const string REJECT = '3';
 
     /** @deprecated 請改用 InvoiceTag::Allowance */
-    public const ALLOWANCE = '4';
+    public const string ALLOWANCE = '4';
 
     /** @deprecated 請改用 InvoiceTag::AllowanceInvalid */
-    public const ALLOWANCE_INVALID = '5';
+    public const string ALLOWANCE_INVALID = '5';
 
     /** @deprecated 請改用 InvoiceTag::IssueConfirm */
-    public const ISSUE_CONFIRM = '6';
+    public const string ISSUE_CONFIRM = '6';
 
     /** @deprecated 請改用 InvoiceTag::InvalidConfirm */
-    public const INVALID_CONFIRM = '7';
+    public const string INVALID_CONFIRM = '7';
 
     /** @deprecated 請改用 InvoiceTag::RejectConfirm */
-    public const REJECT_CONFIRM = '8';
+    public const string REJECT_CONFIRM = '8';
 
     /** @deprecated 請改用 InvoiceTag::AllowanceConfirm */
-    public const ALLOWANCE_CONFIRM = '9';
+    public const string ALLOWANCE_CONFIRM = '9';
 
     /** @deprecated 請改用 InvoiceTag::AllowanceInvalidConfirm */
-    public const ALLOWANCE_INVALID_CONFIRM = '10';
+    public const string ALLOWANCE_INVALID_CONFIRM = '10';
 
     /** @deprecated 請改用 InvoiceTag::cases() */
     public const VALID_TAGS = [

@@ -31,13 +31,13 @@ enum InvoiceWordStatus: int
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 InvoiceWordStatus::Disabled */
-    public const DISABLED = 0;
+    public const int DISABLED = 0;
 
     /** @deprecated 請改用 InvoiceWordStatus::Suspended */
-    public const SUSPENDED = 1;
+    public const int SUSPENDED = 1;
 
     /** @deprecated 請改用 InvoiceWordStatus::Enabled */
-    public const ENABLED = 2;
+    public const int ENABLED = 2;
 
     /** @deprecated 請改用 InvoiceWordStatus::cases() */
     public const VALID_STATUSES = [

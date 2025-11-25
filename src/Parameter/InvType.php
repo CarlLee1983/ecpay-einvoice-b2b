@@ -24,10 +24,10 @@ enum InvType: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 InvType::General */
-    public const GENERAL = '07';
+    public const string GENERAL = '07';
 
     /** @deprecated 請改用 InvType::Special */
-    public const SPECIAL = '08';
+    public const string SPECIAL = '08';
 
     /** @deprecated 請改用 InvType::cases() */
     public const VALID_TYPES = [

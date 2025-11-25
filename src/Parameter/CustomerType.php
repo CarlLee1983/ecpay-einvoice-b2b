@@ -29,13 +29,13 @@ enum CustomerType: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 CustomerType::Buyer */
-    public const BUYER = '1';
+    public const string BUYER = '1';
 
     /** @deprecated 請改用 CustomerType::Seller */
-    public const SELLER = '2';
+    public const string SELLER = '2';
 
     /** @deprecated 請改用 CustomerType::Both */
-    public const BOTH = '3';
+    public const string BOTH = '3';
 
     /** @deprecated 請改用 CustomerType::cases() */
     public const VALID_TYPES = [

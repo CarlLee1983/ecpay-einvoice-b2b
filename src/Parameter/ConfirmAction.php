@@ -26,10 +26,10 @@ enum ConfirmAction: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 ConfirmAction::Confirm */
-    public const CONFIRM = '1';
+    public const string CONFIRM = '1';
 
     /** @deprecated 請改用 ConfirmAction::Reject */
-    public const REJECT = '2';
+    public const string REJECT = '2';
 
     /** @deprecated 請改用 ConfirmAction::cases() */
     public const VALID_ACTIONS = [

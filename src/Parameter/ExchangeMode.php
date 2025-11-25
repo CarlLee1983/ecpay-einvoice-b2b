@@ -30,10 +30,10 @@ enum ExchangeMode: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 ExchangeMode::Archive */
-    public const ARCHIVE = '0';
+    public const string ARCHIVE = '0';
 
     /** @deprecated 請改用 ExchangeMode::Exchange */
-    public const EXCHANGE = '1';
+    public const string EXCHANGE = '1';
 
     /** @deprecated 請改用 ExchangeMode::cases() */
     public const VALID_MODES = [

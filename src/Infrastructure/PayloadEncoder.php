@@ -40,7 +40,7 @@ class PayloadEncoder
         }
 
         $encodedData = json_encode($payload['Data']);
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if ($encodedData === false) {
             throw new Exception('The invoice data format is invalid.');
         }
 
@@ -62,13 +62,14 @@ class PayloadEncoder
     public function decodeData(string $encryptedData): array
     {
         $decrypted = $this->cipherService->decrypt($encryptedData);
-        $decoded = json_decode(urldecode($decrypted), true);
+        $urlDecoded = urldecode($decrypted);
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        // PHP 8.3: 使用 json_validate() 先驗證 JSON 格式
+        if (!json_validate($urlDecoded)) {
             throw new Exception('The response data format is invalid.');
         }
 
-        return $decoded;
+        return json_decode($urlDecoded, true);
     }
 
     /**

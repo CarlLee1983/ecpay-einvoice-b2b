@@ -36,16 +36,16 @@ enum TaxType: string
     // ===== 向後相容常數（標記 @deprecated）=====
 
     /** @deprecated 請改用 TaxType::Taxable */
-    public const TAXABLE = '1';
+    public const string TAXABLE = '1';
 
     /** @deprecated 請改用 TaxType::ZeroTax */
-    public const ZERO_TAX = '2';
+    public const string ZERO_TAX = '2';
 
     /** @deprecated 請改用 TaxType::TaxFree */
-    public const TAX_FREE = '3';
+    public const string TAX_FREE = '3';
 
     /** @deprecated 請改用 TaxType::SpecialTax */
-    public const SPECIAL_TAX = '4';
+    public const string SPECIAL_TAX = '4';
 
     /** @deprecated 請改用 TaxType::cases() */
     public const VALID_TYPES = [
