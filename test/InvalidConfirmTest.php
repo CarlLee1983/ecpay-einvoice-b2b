@@ -107,4 +107,3 @@ class InvalidConfirmTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

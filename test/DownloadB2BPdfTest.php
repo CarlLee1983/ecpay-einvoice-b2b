@@ -118,4 +118,3 @@ class DownloadB2BPdfTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

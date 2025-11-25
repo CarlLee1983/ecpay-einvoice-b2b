@@ -120,4 +120,3 @@ class GetGovInvoiceWordSetting extends Content
         return str_pad((string) $yearValue, 3, '0', STR_PAD_LEFT);
     }
 }
-

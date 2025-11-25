@@ -196,4 +196,3 @@ class GetReject extends Content
         }
     }
 }
-

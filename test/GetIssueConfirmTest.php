@@ -344,4 +344,3 @@ class GetIssueConfirmTest extends TestCase
         return $property->getValue($this->query);
     }
 }
-

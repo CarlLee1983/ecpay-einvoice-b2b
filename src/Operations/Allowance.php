@@ -324,4 +324,3 @@ class Allowance extends Content
         }
     }
 }
-

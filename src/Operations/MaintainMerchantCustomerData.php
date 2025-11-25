@@ -426,4 +426,3 @@ class MaintainMerchantCustomerData extends Content
         }
     }
 }
-

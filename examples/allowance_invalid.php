@@ -15,7 +15,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use CarlLee\EcPayB2B\EcPayClient;
 use CarlLee\EcPayB2B\Operations\AllowanceInvalid;
-use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
 use CarlLee\EcPayB2B\Parameter\InvalidReason;
 use CarlLee\EcPayB2B\Request;
 

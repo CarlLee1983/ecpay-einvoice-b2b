@@ -15,7 +15,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use CarlLee\EcPayB2B\EcPayClient;
 use CarlLee\EcPayB2B\Operations\Reject;
-use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
 use CarlLee\EcPayB2B\Request;
 
 // 測試環境設定

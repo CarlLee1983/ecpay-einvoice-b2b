@@ -184,4 +184,3 @@ class AllowanceConfirm extends Content
         }
     }
 }
-

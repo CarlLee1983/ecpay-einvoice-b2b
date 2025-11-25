@@ -293,4 +293,3 @@ class AddInvoiceWordSettingTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

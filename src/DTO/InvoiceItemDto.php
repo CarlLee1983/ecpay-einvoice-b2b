@@ -282,4 +282,3 @@ final class InvoiceItemDto implements ItemDtoInterface
         return $this->itemTax;
     }
 }
-

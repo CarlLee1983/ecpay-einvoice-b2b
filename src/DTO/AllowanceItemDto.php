@@ -311,4 +311,3 @@ final class AllowanceItemDto implements ItemDtoInterface
         return $this->taxType;
     }
 }
-

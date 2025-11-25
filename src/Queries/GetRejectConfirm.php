@@ -196,4 +196,3 @@ class GetRejectConfirm extends Content
         }
     }
 }
-

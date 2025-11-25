@@ -401,4 +401,3 @@ class AddInvoiceWordSetting extends Content
         }
     }
 }
-

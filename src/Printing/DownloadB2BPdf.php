@@ -112,4 +112,3 @@ class DownloadB2BPdf extends Content
         }
     }
 }
-

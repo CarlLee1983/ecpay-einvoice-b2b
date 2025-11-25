@@ -18,8 +18,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use CarlLee\EcPayB2B\EcPayClient;
 use CarlLee\EcPayB2B\Notifications\Notify;
-use CarlLee\EcPayB2B\Parameter\InvoiceTag;
-use CarlLee\EcPayB2B\Parameter\NotifyTarget;
 use CarlLee\EcPayB2B\Request;
 
 // 測試環境設定

@@ -15,7 +15,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use CarlLee\EcPayB2B\EcPayClient;
 use CarlLee\EcPayB2B\Operations\Invalid;
-use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
 use CarlLee\EcPayB2B\Parameter\InvalidReason;
 use CarlLee\EcPayB2B\Request;
 
@@ -50,8 +49,8 @@ try {
     $data = $response->getData();
 
     echo "=== 作廢發票結果 ===\n";
-    echo "RtnCode: " . ($data['RtnCode'] ?? 'N/A') . "\n";
-    echo "RtnMsg: " . ($data['RtnMsg'] ?? 'N/A') . "\n";
+    echo 'RtnCode: ' . ($data['RtnCode'] ?? 'N/A') . "\n";
+    echo 'RtnMsg: ' . ($data['RtnMsg'] ?? 'N/A') . "\n";
 
     if ($response->success()) {
         echo "\n作廢申請成功！等待交易相對人確認\n";
@@ -62,6 +61,5 @@ try {
     echo "\n完整回應資料：\n";
     print_r($data);
 } catch (Exception $e) {
-    echo "錯誤: " . $e->getMessage() . "\n";
+    echo '錯誤: ' . $e->getMessage() . "\n";
 }
-

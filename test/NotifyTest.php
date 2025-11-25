@@ -331,4 +331,3 @@ class NotifyTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

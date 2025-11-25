@@ -145,4 +145,3 @@ class UpdateInvoiceWordStatusTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

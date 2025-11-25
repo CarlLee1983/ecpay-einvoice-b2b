@@ -392,4 +392,3 @@ class GetIssueConfirm extends Content
         }
     }
 }
-

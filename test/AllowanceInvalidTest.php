@@ -155,4 +155,3 @@ class AllowanceInvalidTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

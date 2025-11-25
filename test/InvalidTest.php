@@ -172,4 +172,3 @@ class InvalidTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

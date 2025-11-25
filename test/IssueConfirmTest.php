@@ -165,4 +165,3 @@ class IssueConfirmTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

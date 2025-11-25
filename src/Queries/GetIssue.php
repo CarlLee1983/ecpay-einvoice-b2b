@@ -183,4 +183,3 @@ class GetIssue extends Content
         }
     }
 }
-

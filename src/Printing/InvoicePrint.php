@@ -110,4 +110,3 @@ class InvoicePrint extends Content
         }
     }
 }
-

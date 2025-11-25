@@ -344,4 +344,3 @@ class IssueTest extends TestCase
         return $content;
     }
 }
-

@@ -14,7 +14,6 @@ declare(strict_types=1);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use CarlLee\EcPayB2B\EcPayClient;
-use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
 use CarlLee\EcPayB2B\Queries\GetIssue;
 use CarlLee\EcPayB2B\Request;
 

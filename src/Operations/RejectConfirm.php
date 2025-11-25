@@ -182,4 +182,3 @@ class RejectConfirm extends Content
         }
     }
 }
-

@@ -184,4 +184,3 @@ class AllowanceInvalidConfirm extends Content
         }
     }
 }
-

@@ -182,4 +182,3 @@ class InvalidConfirm extends Content
         }
     }
 }
-

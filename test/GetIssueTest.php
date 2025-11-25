@@ -213,4 +213,3 @@ class GetIssueTest extends TestCase
         return $property->getValue($this->query);
     }
 }
-

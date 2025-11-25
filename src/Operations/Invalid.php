@@ -183,4 +183,3 @@ class Invalid extends Content
         }
     }
 }
-

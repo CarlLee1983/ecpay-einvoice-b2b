@@ -183,4 +183,3 @@ class Reject extends Content
         }
     }
 }
-

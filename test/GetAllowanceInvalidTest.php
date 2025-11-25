@@ -189,4 +189,3 @@ class GetAllowanceInvalidTest extends TestCase
         return $property->getValue($this->query);
     }
 }
-

@@ -118,4 +118,3 @@ class InvoicePrintTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-

@@ -235,4 +235,3 @@ class AllowanceTest extends TestCase
         return $content;
     }
 }
-

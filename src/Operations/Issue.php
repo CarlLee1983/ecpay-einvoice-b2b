@@ -727,4 +727,3 @@ class Issue extends Content
         }
     }
 }
-

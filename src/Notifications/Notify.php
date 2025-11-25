@@ -405,4 +405,3 @@ class Notify extends Content
         }
     }
 }
-

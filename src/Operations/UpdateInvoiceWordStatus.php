@@ -142,4 +142,3 @@ class UpdateInvoiceWordStatus extends Content
         }
     }
 }
-

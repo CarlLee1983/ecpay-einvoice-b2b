@@ -146,4 +146,3 @@ class RejectTest extends TestCase
         return $property->getValue($this->operation);
     }
 }
-
