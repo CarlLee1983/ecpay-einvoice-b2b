@@ -5,45 +5,64 @@ declare(strict_types=1);
 namespace CarlLee\EcPayB2B\Parameter;
 
 /**
- * 交易對象維護動作常數。
+ * 交易對象維護動作。
  *
  * @see https://developers.ecpay.com.tw/?p=14830
  */
-final class MaintainAction
+enum MaintainAction: string
 {
     /**
      * 新增。
      */
-    public const ADD = 'Add';
+    case Add = 'Add';
 
     /**
      * 編輯。
      */
-    public const UPDATE = 'Update';
+    case Update = 'Update';
 
     /**
      * 刪除。
      */
+    case Delete = 'Delete';
+
+    // ===== 向後相容常數（標記 @deprecated）=====
+
+    /** @deprecated 請改用 MaintainAction::Add */
+    public const ADD = 'Add';
+
+    /** @deprecated 請改用 MaintainAction::Update */
+    public const UPDATE = 'Update';
+
+    /** @deprecated 請改用 MaintainAction::Delete */
     public const DELETE = 'Delete';
 
-    /**
-     * 有效動作值。
-     */
+    /** @deprecated 請改用 MaintainAction::cases() */
     public const VALID_ACTIONS = [
         self::ADD,
         self::UPDATE,
         self::DELETE,
     ];
 
+    // ===== 方法 =====
+
+    /**
+     * 取得顯示名稱。
+     */
+    public function label(): string
+    {
+        return match ($this) {
+            self::Add => '新增',
+            self::Update => '編輯',
+            self::Delete => '刪除',
+        };
+    }
+
     /**
      * 檢查是否為有效的動作值。
-     *
-     * @param string $action
-     * @return bool
      */
     public static function isValid(string $action): bool
     {
-        return in_array($action, self::VALID_ACTIONS, true);
+        return self::tryFrom($action) !== null;
     }
 }
-

@@ -245,7 +245,7 @@ class AddInvoiceWordSettingTest extends TestCase
     {
         $content = $this->getRawContent();
 
-        $this->assertSame((string) InvoiceCategory::B2B, $content['Data']['InvoiceCategory']);
+        $this->assertSame((string) InvoiceCategory::B2B->value, $content['Data']['InvoiceCategory']);
     }
 
     public function testDefaultInvType(): void

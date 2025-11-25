@@ -39,7 +39,7 @@ class GetInvoiceWordSetting extends Content
             'InvoiceYear' => '',
             'InvoiceTerm' => InvoiceTerm::ALL,
             'UseStatus' => UseStatus::ALL,
-            'InvoiceCategory' => InvoiceCategory::B2B,
+            'InvoiceCategory' => InvoiceCategory::B2B->value,
             'InvType' => '',
             'InvoiceHeader' => '',
         ];
@@ -94,7 +94,7 @@ class GetInvoiceWordSetting extends Content
      */
     public function setInvoiceCategory(int $category): self
     {
-        if ($category !== InvoiceCategory::B2B) {
+        if ($category !== InvoiceCategory::B2B->value) {
             throw new Exception('InvoiceCategory must be 2 (B2B).');
         }
 
@@ -161,7 +161,7 @@ class GetInvoiceWordSetting extends Content
         $this->assertInvoiceTerm($this->content['Data']['InvoiceTerm']);
         $this->assertUseStatus($this->content['Data']['UseStatus']);
 
-        if ($this->content['Data']['InvoiceCategory'] !== InvoiceCategory::B2B) {
+        if ($this->content['Data']['InvoiceCategory'] !== InvoiceCategory::B2B->value) {
             throw new Exception('InvoiceCategory must be 2 (B2B).');
         }
 

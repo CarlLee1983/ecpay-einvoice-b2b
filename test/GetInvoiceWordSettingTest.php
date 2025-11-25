@@ -89,7 +89,7 @@ class GetInvoiceWordSettingTest extends TestCase
     public function testDefaultInvoiceCategory(): void
     {
         $content = $this->getRawContent();
-        $this->assertSame(InvoiceCategory::B2B, $content['Data']['InvoiceCategory']);
+        $this->assertSame(InvoiceCategory::B2B->value, $content['Data']['InvoiceCategory']);
     }
 
     public function testFullPayload(): void

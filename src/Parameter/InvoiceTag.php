@@ -5,67 +5,97 @@ declare(strict_types=1);
 namespace CarlLee\EcPayB2B\Parameter;
 
 /**
- * 發送內容類型常數。
+ * 發送內容類型。
  *
  * 用於發送發票通知 API 中的 InvoiceTag 參數。
  *
  * @see https://developers.ecpay.com.tw/?p=14988
  */
-final class InvoiceTag
+enum InvoiceTag: string
 {
     /**
      * 發票開立。
      */
-    public const ISSUE = '1';
+    case Issue = '1';
 
     /**
      * 發票作廢。
      */
-    public const INVALID = '2';
+    case Invalid = '2';
 
     /**
      * 發票退回。
      */
-    public const REJECT = '3';
+    case Reject = '3';
 
     /**
      * 開立折讓。
      */
-    public const ALLOWANCE = '4';
+    case Allowance = '4';
 
     /**
      * 作廢折讓。
      */
-    public const ALLOWANCE_INVALID = '5';
+    case AllowanceInvalid = '5';
 
     /**
      * 開立發票確認。
      */
-    public const ISSUE_CONFIRM = '6';
+    case IssueConfirm = '6';
 
     /**
      * 作廢發票確認。
      */
-    public const INVALID_CONFIRM = '7';
+    case InvalidConfirm = '7';
 
     /**
      * 退回發票確認。
      */
-    public const REJECT_CONFIRM = '8';
+    case RejectConfirm = '8';
 
     /**
      * 折讓確認。
      */
-    public const ALLOWANCE_CONFIRM = '9';
+    case AllowanceConfirm = '9';
 
     /**
      * 作廢折讓確認。
      */
+    case AllowanceInvalidConfirm = '10';
+
+    // ===== 向後相容常數（標記 @deprecated）=====
+
+    /** @deprecated 請改用 InvoiceTag::Issue */
+    public const ISSUE = '1';
+
+    /** @deprecated 請改用 InvoiceTag::Invalid */
+    public const INVALID = '2';
+
+    /** @deprecated 請改用 InvoiceTag::Reject */
+    public const REJECT = '3';
+
+    /** @deprecated 請改用 InvoiceTag::Allowance */
+    public const ALLOWANCE = '4';
+
+    /** @deprecated 請改用 InvoiceTag::AllowanceInvalid */
+    public const ALLOWANCE_INVALID = '5';
+
+    /** @deprecated 請改用 InvoiceTag::IssueConfirm */
+    public const ISSUE_CONFIRM = '6';
+
+    /** @deprecated 請改用 InvoiceTag::InvalidConfirm */
+    public const INVALID_CONFIRM = '7';
+
+    /** @deprecated 請改用 InvoiceTag::RejectConfirm */
+    public const REJECT_CONFIRM = '8';
+
+    /** @deprecated 請改用 InvoiceTag::AllowanceConfirm */
+    public const ALLOWANCE_CONFIRM = '9';
+
+    /** @deprecated 請改用 InvoiceTag::AllowanceInvalidConfirm */
     public const ALLOWANCE_INVALID_CONFIRM = '10';
 
-    /**
-     * 有效標籤值。
-     */
+    /** @deprecated 請改用 InvoiceTag::cases() */
     public const VALID_TAGS = [
         self::ISSUE,
         self::INVALID,
@@ -79,9 +109,7 @@ final class InvoiceTag
         self::ALLOWANCE_INVALID_CONFIRM,
     ];
 
-    /**
-     * 標籤名稱對應。
-     */
+    /** @deprecated 請改用 $tag->label() */
     public const TAG_NAMES = [
         self::ISSUE => '發票開立',
         self::INVALID => '發票作廢',
@@ -95,9 +123,7 @@ final class InvoiceTag
         self::ALLOWANCE_INVALID_CONFIRM => '作廢折讓確認',
     ];
 
-    /**
-     * 需要折讓單編號的標籤。
-     */
+    /** @deprecated 請改用 InvoiceTag::allowanceTags() */
     public const ALLOWANCE_TAGS = [
         self::ALLOWANCE,
         self::ALLOWANCE_INVALID,
@@ -105,37 +131,75 @@ final class InvoiceTag
         self::ALLOWANCE_INVALID_CONFIRM,
     ];
 
+    // ===== 方法 =====
+
+    /**
+     * 取得顯示名稱。
+     */
+    public function label(): string
+    {
+        return match ($this) {
+            self::Issue => '發票開立',
+            self::Invalid => '發票作廢',
+            self::Reject => '發票退回',
+            self::Allowance => '開立折讓',
+            self::AllowanceInvalid => '作廢折讓',
+            self::IssueConfirm => '開立發票確認',
+            self::InvalidConfirm => '作廢發票確認',
+            self::RejectConfirm => '退回發票確認',
+            self::AllowanceConfirm => '折讓確認',
+            self::AllowanceInvalidConfirm => '作廢折讓確認',
+        };
+    }
+
     /**
      * 檢查是否為有效的標籤。
-     *
-     * @param string $tag
-     * @return bool
      */
     public static function isValid(string $tag): bool
     {
-        return in_array($tag, self::VALID_TAGS, true);
+        return self::tryFrom($tag) !== null;
+    }
+
+    /**
+     * 取得折讓相關標籤。
+     *
+     * @return array<InvoiceTag>
+     */
+    public static function allowanceTags(): array
+    {
+        return [
+            self::Allowance,
+            self::AllowanceInvalid,
+            self::AllowanceConfirm,
+            self::AllowanceInvalidConfirm,
+        ];
+    }
+
+    /**
+     * 檢查此實例是否為折讓相關標籤。
+     */
+    public function isAllowance(): bool
+    {
+        return in_array($this, self::allowanceTags(), true);
+    }
+
+    /**
+     * 檢查是否為折讓相關標籤（靜態方法，向後相容）。
+     */
+    public static function isAllowanceTag(string $tag): bool
+    {
+        $enum = self::tryFrom($tag);
+
+        return $enum !== null && $enum->isAllowance();
     }
 
     /**
      * 取得標籤名稱。
      *
-     * @param string $tag
-     * @return string|null
+     * @deprecated 請改用 InvoiceTag::tryFrom($tag)?->label()
      */
     public static function getName(string $tag): ?string
     {
-        return self::TAG_NAMES[$tag] ?? null;
-    }
-
-    /**
-     * 檢查是否為折讓相關標籤。
-     *
-     * @param string $tag
-     * @return bool
-     */
-    public static function isAllowanceTag(string $tag): bool
-    {
-        return in_array($tag, self::ALLOWANCE_TAGS, true);
+        return self::tryFrom($tag)?->label();
     }
 }
-

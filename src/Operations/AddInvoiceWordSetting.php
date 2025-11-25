@@ -54,7 +54,7 @@ class AddInvoiceWordSetting extends Content
             'InvoiceTerm' => '',
             'InvoiceYear' => '',
             'InvType' => InvType::GENERAL,
-            'InvoiceCategory' => (string) InvoiceCategory::B2B,
+            'InvoiceCategory' => (string) InvoiceCategory::B2B->value,
             'InvoiceHeader' => '',
             'InvoiceStart' => '',
             'InvoiceEnd' => '',
@@ -115,7 +115,7 @@ class AddInvoiceWordSetting extends Content
      */
     public function setInvoiceCategory(int $category): self
     {
-        if ($category !== InvoiceCategory::B2B) {
+        if ($category !== InvoiceCategory::B2B->value) {
             throw new Exception('InvoiceCategory must be 2 (B2B).');
         }
 
@@ -236,7 +236,7 @@ class AddInvoiceWordSetting extends Content
         }
 
         // 驗證發票種類
-        if ($this->content['Data']['InvoiceCategory'] !== (string) InvoiceCategory::B2B) {
+        if ($this->content['Data']['InvoiceCategory'] !== (string) InvoiceCategory::B2B->value) {
             throw new Exception('InvoiceCategory must be 2 (B2B).');
         }
 

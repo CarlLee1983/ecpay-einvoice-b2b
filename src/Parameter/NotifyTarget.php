@@ -5,67 +5,83 @@ declare(strict_types=1);
 namespace CarlLee\EcPayB2B\Parameter;
 
 /**
- * 發送對象常數。
+ * 發送對象。
  *
  * 用於發送發票通知 API 中的 Notified 參數。
  *
  * @see https://developers.ecpay.com.tw/?p=14988
  */
-final class NotifyTarget
+enum NotifyTarget: string
 {
     /**
      * 發送通知給客戶。
      */
-    public const CUSTOMER = 'C';
+    case Customer = 'C';
 
     /**
      * 發送通知給合作特店。
      */
-    public const MERCHANT = 'M';
+    case Merchant = 'M';
 
     /**
      * 皆發送通知。
      */
+    case All = 'A';
+
+    // ===== 向後相容常數（標記 @deprecated）=====
+
+    /** @deprecated 請改用 NotifyTarget::Customer */
+    public const CUSTOMER = 'C';
+
+    /** @deprecated 請改用 NotifyTarget::Merchant */
+    public const MERCHANT = 'M';
+
+    /** @deprecated 請改用 NotifyTarget::All */
     public const ALL = 'A';
 
-    /**
-     * 有效對象值。
-     */
+    /** @deprecated 請改用 NotifyTarget::cases() */
     public const VALID_TARGETS = [
         self::CUSTOMER,
         self::MERCHANT,
         self::ALL,
     ];
 
-    /**
-     * 對象名稱對應。
-     */
+    /** @deprecated 請改用 $target->label() */
     public const TARGET_NAMES = [
         self::CUSTOMER => '客戶',
         self::MERCHANT => '合作特店',
         self::ALL => '皆發送',
     ];
 
+    // ===== 方法 =====
+
+    /**
+     * 取得顯示名稱。
+     */
+    public function label(): string
+    {
+        return match ($this) {
+            self::Customer => '客戶',
+            self::Merchant => '合作特店',
+            self::All => '皆發送',
+        };
+    }
+
     /**
      * 檢查是否為有效的發送對象。
-     *
-     * @param string $target
-     * @return bool
      */
     public static function isValid(string $target): bool
     {
-        return in_array($target, self::VALID_TARGETS, true);
+        return self::tryFrom($target) !== null;
     }
 
     /**
      * 取得對象名稱。
      *
-     * @param string $target
-     * @return string|null
+     * @deprecated 請改用 NotifyTarget::tryFrom($target)?->label()
      */
     public static function getName(string $target): ?string
     {
-        return self::TARGET_NAMES[$target] ?? null;
+        return self::tryFrom($target)?->label();
     }
 }
-
