@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B;
+namespace CarlLee\EcPayB2B;
 
-use ecPay\eInvoiceB2B\Contracts\CommandInterface;
-use ecPay\eInvoiceB2B\DTO\RqHeaderDto;
-use ecPay\eInvoiceB2B\Infrastructure\CipherService;
-use ecPay\eInvoiceB2B\Infrastructure\PayloadEncoder;
+use CarlLee\EcPayB2B\Contracts\CommandInterface;
+use CarlLee\EcPayB2B\DTO\RqHeaderDto;
+use CarlLee\EcPayB2B\Infrastructure\CipherService;
+use CarlLee\EcPayB2B\Infrastructure\PayloadEncoder;
 use Exception;
 
 abstract class Content implements InvoiceInterface, CommandInterface

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Notifications\Notify;
-use ecPay\eInvoiceB2B\Parameter\InvoiceTag;
-use ecPay\eInvoiceB2B\Parameter\NotifyTarget;
+use CarlLee\EcPayB2B\Notifications\Notify;
+use CarlLee\EcPayB2B\Parameter\InvoiceTag;
+use CarlLee\EcPayB2B\Parameter\NotifyTarget;
 use PHPUnit\Framework\TestCase;
 
 class NotifyTest extends TestCase

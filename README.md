@@ -62,7 +62,7 @@ Server: https://einvoice.ecpay.com.tw (TCP 443)
 ### SSL 驗證設定
 
 ```php
-use ecPay\eInvoiceB2B\Request;
+use CarlLee\EcPayB2B\Request;
 
 // 測試環境可關閉 SSL 驗證（不建議用於正式環境）
 Request::setVerifySsl(false);
@@ -74,9 +74,9 @@ Request::setVerifySsl(true);
 ## 快速開始
 
 ```php
-use ecPay\eInvoiceB2B\EcPayClient;
-use ecPay\eInvoiceB2B\Operations\Issue;
-use ecPay\eInvoiceB2B\Request;
+use CarlLee\EcPayB2B\EcPayClient;
+use CarlLee\EcPayB2B\Operations\Issue;
+use CarlLee\EcPayB2B\Request;
 
 $server = 'https://einvoice-stage.ecpay.com.tw';
 $merchantId = '2000132';
@@ -163,10 +163,10 @@ if ($response->success()) {
 ### 開立發票
 
 ```php
-use ecPay\eInvoiceB2B\Operations\Issue;
-use ecPay\eInvoiceB2B\DTO\InvoiceItemDto;
-use ecPay\eInvoiceB2B\DTO\ItemCollection;
-use ecPay\eInvoiceB2B\Parameter\TaxType;
+use CarlLee\EcPayB2B\Operations\Issue;
+use CarlLee\EcPayB2B\DTO\InvoiceItemDto;
+use CarlLee\EcPayB2B\DTO\ItemCollection;
+use CarlLee\EcPayB2B\Parameter\TaxType;
 
 $invoice = new Issue($merchantId, $hashKey, $hashIV);
 
@@ -195,8 +195,8 @@ $response = $client->send($invoice);
 ### 作廢發票
 
 ```php
-use ecPay\eInvoiceB2B\Operations\Invalid;
-use ecPay\eInvoiceB2B\Parameter\InvalidReason;
+use CarlLee\EcPayB2B\Operations\Invalid;
+use CarlLee\EcPayB2B\Parameter\InvalidReason;
 
 $invalid = new Invalid($merchantId, $hashKey, $hashIV);
 $invalid
@@ -211,9 +211,9 @@ $response = $client->send($invalid);
 ### 開立折讓發票
 
 ```php
-use ecPay\eInvoiceB2B\Operations\Allowance;
-use ecPay\eInvoiceB2B\DTO\AllowanceItemDto;
-use ecPay\eInvoiceB2B\DTO\ItemCollection;
+use CarlLee\EcPayB2B\Operations\Allowance;
+use CarlLee\EcPayB2B\DTO\AllowanceItemDto;
+use CarlLee\EcPayB2B\DTO\ItemCollection;
 
 $allowance = new Allowance($merchantId, $hashKey, $hashIV);
 $allowance
@@ -236,8 +236,8 @@ $response = $client->send($allowance);
 ### 查詢發票
 
 ```php
-use ecPay\eInvoiceB2B\Queries\GetIssue;
-use ecPay\eInvoiceB2B\Parameter\B2BInvoiceCategory;
+use CarlLee\EcPayB2B\Queries\GetIssue;
+use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
 
 $query = new GetIssue($merchantId, $hashKey, $hashIV);
 $query
@@ -251,9 +251,9 @@ $response = $client->send($query);
 ### 發送發票通知
 
 ```php
-use ecPay\eInvoiceB2B\Notifications\Notify;
-use ecPay\eInvoiceB2B\Parameter\InvoiceTag;
-use ecPay\eInvoiceB2B\Parameter\NotifyTarget;
+use CarlLee\EcPayB2B\Notifications\Notify;
+use CarlLee\EcPayB2B\Parameter\InvoiceTag;
+use CarlLee\EcPayB2B\Parameter\NotifyTarget;
 
 $notify = new Notify($merchantId, $hashKey, $hashIV);
 $notify
@@ -269,7 +269,7 @@ $response = $client->send($notify);
 ### 發票列印
 
 ```php
-use ecPay\eInvoiceB2B\Printing\InvoicePrint;
+use CarlLee\EcPayB2B\Printing\InvoicePrint;
 
 $print = new InvoicePrint($merchantId, $hashKey, $hashIV);
 $print
@@ -305,7 +305,7 @@ $printUrl = $response->getData()['RtnData']['PrintUrl'] ?? null;
 ### 使用範例
 
 ```php
-use ecPay\eInvoiceB2B\Parameter\TaxType;
+use CarlLee\EcPayB2B\Parameter\TaxType;
 
 // 使用常數
 $invoice->setTaxType(TaxType::TAXABLE);
@@ -319,7 +319,7 @@ if (TaxType::isValid($value)) {
 ## 模組分群
 
 ```
-ecPay\eInvoiceB2B\
+CarlLee\EcPayB2B\
 ├── Operations\         # 發票作業（開立、作廢、退回、折讓等）
 ├── Queries\            # 查詢作業
 ├── Notifications\      # 發送通知
@@ -335,7 +335,7 @@ ecPay\eInvoiceB2B\
 `OperationFactory` 可依別名快速建立操作物件並注入共用憑證。
 
 ```php
-use ecPay\eInvoiceB2B\Factories\OperationFactory;
+use CarlLee\EcPayB2B\Factories\OperationFactory;
 
 $factory = new OperationFactory([
     'merchant_id' => $merchantId,
@@ -355,7 +355,7 @@ $query = $factory->make('get_issue');
 
 ```php
 'providers' => [
-    ecPay\eInvoiceB2B\Laravel\EcPayServiceProvider::class,
+    CarlLee\EcPayB2B\Laravel\EcPayServiceProvider::class,
 ],
 ```
 
@@ -379,8 +379,8 @@ ECPAY_EINVOICE_B2B_HASH_IV=q9jcZX8Ib9LM8wYk
 ### 使用 Facade
 
 ```php
-use ecPay\eInvoiceB2B\Laravel\Facades\EcPayInvoice;
-use ecPay\eInvoiceB2B\Laravel\Facades\EcPayQuery;
+use CarlLee\EcPayB2B\Laravel\Facades\EcPayInvoice;
+use CarlLee\EcPayB2B\Laravel\Facades\EcPayQuery;
 
 $invoice = EcPayInvoice::issue();
 $query = EcPayQuery::getIssue();
@@ -511,8 +511,8 @@ This library wraps the official ECPay e-Invoice B2B API (Exchange Mode) with ful
 ## Quick Start
 
 ```php
-use ecPay\eInvoiceB2B\EcPayClient;
-use ecPay\eInvoiceB2B\Operations\Issue;
+use CarlLee\EcPayB2B\EcPayClient;
+use CarlLee\EcPayB2B\Operations\Issue;
 
 $client = new EcPayClient($server, $hashKey, $hashIV);
 

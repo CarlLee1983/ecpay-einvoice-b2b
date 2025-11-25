@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Parameter;
+namespace CarlLee\EcPayB2B\Parameter;
 
 /**
  * B2B 發票種類常數（用於查詢發票）。

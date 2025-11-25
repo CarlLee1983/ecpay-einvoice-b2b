@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Laravel;
+namespace CarlLee\EcPayB2B\Laravel;
 
-use ecPay\eInvoiceB2B\EcPayClient;
-use ecPay\eInvoiceB2B\Factories\OperationFactory;
-use ecPay\eInvoiceB2B\Factories\OperationFactoryInterface;
-use ecPay\eInvoiceB2B\Laravel\Services\OperationCoordinator;
-use ecPay\eInvoiceB2B\Request;
+use CarlLee\EcPayB2B\EcPayClient;
+use CarlLee\EcPayB2B\Factories\OperationFactory;
+use CarlLee\EcPayB2B\Factories\OperationFactoryInterface;
+use CarlLee\EcPayB2B\Laravel\Services\OperationCoordinator;
+use CarlLee\EcPayB2B\Request;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 

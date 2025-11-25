@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Notifications;
+namespace CarlLee\EcPayB2B\Notifications;
 
-use ecPay\eInvoiceB2B\Content;
-use ecPay\eInvoiceB2B\Parameter\InvoiceTag;
-use ecPay\eInvoiceB2B\Parameter\NotifyTarget;
+use CarlLee\EcPayB2B\Content;
+use CarlLee\EcPayB2B\Parameter\InvoiceTag;
+use CarlLee\EcPayB2B\Parameter\NotifyTarget;
 use Exception;
 
 /**

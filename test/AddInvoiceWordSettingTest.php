@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Operations\AddInvoiceWordSetting;
-use ecPay\eInvoiceB2B\Parameter\InvoiceCategory;
-use ecPay\eInvoiceB2B\Parameter\InvoiceTerm;
-use ecPay\eInvoiceB2B\Parameter\InvType;
+use CarlLee\EcPayB2B\Operations\AddInvoiceWordSetting;
+use CarlLee\EcPayB2B\Parameter\InvoiceCategory;
+use CarlLee\EcPayB2B\Parameter\InvoiceTerm;
+use CarlLee\EcPayB2B\Parameter\InvType;
 use PHPUnit\Framework\TestCase;
 
 class AddInvoiceWordSettingTest extends TestCase

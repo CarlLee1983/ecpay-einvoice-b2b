@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Operations;
+namespace CarlLee\EcPayB2B\Operations;
 
-use ecPay\eInvoiceB2B\Content;
-use ecPay\eInvoiceB2B\Parameter\InvoiceCategory;
-use ecPay\eInvoiceB2B\Parameter\InvoiceTerm;
-use ecPay\eInvoiceB2B\Parameter\InvType;
+use CarlLee\EcPayB2B\Content;
+use CarlLee\EcPayB2B\Parameter\InvoiceCategory;
+use CarlLee\EcPayB2B\Parameter\InvoiceTerm;
+use CarlLee\EcPayB2B\Parameter\InvType;
 use Exception;
 
 /**

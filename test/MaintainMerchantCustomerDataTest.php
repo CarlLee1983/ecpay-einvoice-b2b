@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Operations\MaintainMerchantCustomerData;
-use ecPay\eInvoiceB2B\Parameter\CustomerType;
-use ecPay\eInvoiceB2B\Parameter\ExchangeMode;
-use ecPay\eInvoiceB2B\Parameter\MaintainAction;
+use CarlLee\EcPayB2B\Operations\MaintainMerchantCustomerData;
+use CarlLee\EcPayB2B\Parameter\CustomerType;
+use CarlLee\EcPayB2B\Parameter\ExchangeMode;
+use CarlLee\EcPayB2B\Parameter\MaintainAction;
 use PHPUnit\Framework\TestCase;
 
 class MaintainMerchantCustomerDataTest extends TestCase

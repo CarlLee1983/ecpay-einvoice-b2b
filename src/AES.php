@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B;
+namespace CarlLee\EcPayB2B;
 
-use ecPay\eInvoiceB2B\Infrastructure\CipherService;
+use CarlLee\EcPayB2B\Infrastructure\CipherService;
 use Exception;
 
 /**

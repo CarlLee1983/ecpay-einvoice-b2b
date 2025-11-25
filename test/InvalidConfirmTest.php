@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Operations\InvalidConfirm;
-use ecPay\eInvoiceB2B\Parameter\ConfirmAction;
+use CarlLee\EcPayB2B\Operations\InvalidConfirm;
+use CarlLee\EcPayB2B\Parameter\ConfirmAction;
 use PHPUnit\Framework\TestCase;
 
 class InvalidConfirmTest extends TestCase

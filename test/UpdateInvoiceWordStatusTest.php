@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Operations\UpdateInvoiceWordStatus;
-use ecPay\eInvoiceB2B\Parameter\InvoiceWordStatus;
+use CarlLee\EcPayB2B\Operations\UpdateInvoiceWordStatus;
+use CarlLee\EcPayB2B\Parameter\InvoiceWordStatus;
 use PHPUnit\Framework\TestCase;
 
 class UpdateInvoiceWordStatusTest extends TestCase

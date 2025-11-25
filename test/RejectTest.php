@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Operations\Reject;
-use ecPay\eInvoiceB2B\Parameter\B2BInvoiceCategory;
+use CarlLee\EcPayB2B\Operations\Reject;
+use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
 use PHPUnit\Framework\TestCase;
 
 class RejectTest extends TestCase

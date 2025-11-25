@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Parameter\B2BInvoiceCategory;
-use ecPay\eInvoiceB2B\Queries\GetAllowanceInvalidConfirm;
+use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
+use CarlLee\EcPayB2B\Queries\GetAllowanceInvalidConfirm;
 use PHPUnit\Framework\TestCase;
 
 class GetAllowanceInvalidConfirmTest extends TestCase

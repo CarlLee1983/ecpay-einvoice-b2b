@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Queries;
+namespace CarlLee\EcPayB2B\Queries;
 
-use ecPay\eInvoiceB2B\Content;
+use CarlLee\EcPayB2B\Content;
 use Exception;
 
 /**

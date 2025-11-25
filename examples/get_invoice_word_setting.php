@@ -12,12 +12,12 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use ecPay\eInvoiceB2B\EcPayClient;
-use ecPay\eInvoiceB2B\Parameter\InvoiceTerm;
-use ecPay\eInvoiceB2B\Parameter\InvType;
-use ecPay\eInvoiceB2B\Parameter\UseStatus;
-use ecPay\eInvoiceB2B\Queries\GetInvoiceWordSetting;
-use ecPay\eInvoiceB2B\Request;
+use CarlLee\EcPayB2B\EcPayClient;
+use CarlLee\EcPayB2B\Parameter\InvoiceTerm;
+use CarlLee\EcPayB2B\Parameter\InvType;
+use CarlLee\EcPayB2B\Parameter\UseStatus;
+use CarlLee\EcPayB2B\Queries\GetInvoiceWordSetting;
+use CarlLee\EcPayB2B\Request;
 
 // 測試環境設定
 $server = 'https://einvoice-stage.ecpay.com.tw';

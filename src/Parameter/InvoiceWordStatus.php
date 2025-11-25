@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Parameter;
+namespace CarlLee\EcPayB2B\Parameter;
 
 /**
  * 發票字軌狀態常數（用於設定字軌狀態 API）。

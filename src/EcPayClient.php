@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B;
+namespace CarlLee\EcPayB2B;
 
-use ecPay\eInvoiceB2B\Contracts\CommandInterface;
-use ecPay\eInvoiceB2B\Infrastructure\CipherService;
-use ecPay\eInvoiceB2B\Infrastructure\PayloadEncoder;
+use CarlLee\EcPayB2B\Contracts\CommandInterface;
+use CarlLee\EcPayB2B\Infrastructure\CipherService;
+use CarlLee\EcPayB2B\Infrastructure\PayloadEncoder;
 use Exception;
 
 class EcPayClient

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Operations;
+namespace CarlLee\EcPayB2B\Operations;
 
-use ecPay\eInvoiceB2B\Content;
-use ecPay\eInvoiceB2B\DTO\InvoiceItemDto;
-use ecPay\eInvoiceB2B\DTO\ItemCollection;
-use ecPay\eInvoiceB2B\Parameter\ExchangeMode;
-use ecPay\eInvoiceB2B\Parameter\InvType;
-use ecPay\eInvoiceB2B\Parameter\SpecialTaxType;
-use ecPay\eInvoiceB2B\Parameter\TaxType;
-use ecPay\eInvoiceB2B\Parameter\ZeroTaxRate;
+use CarlLee\EcPayB2B\Content;
+use CarlLee\EcPayB2B\DTO\InvoiceItemDto;
+use CarlLee\EcPayB2B\DTO\ItemCollection;
+use CarlLee\EcPayB2B\Parameter\ExchangeMode;
+use CarlLee\EcPayB2B\Parameter\InvType;
+use CarlLee\EcPayB2B\Parameter\SpecialTaxType;
+use CarlLee\EcPayB2B\Parameter\TaxType;
+use CarlLee\EcPayB2B\Parameter\ZeroTaxRate;
 use Exception;
 
 /**

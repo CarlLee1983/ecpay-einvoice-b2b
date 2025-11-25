@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Operations;
+namespace CarlLee\EcPayB2B\Operations;
 
-use ecPay\eInvoiceB2B\Content;
-use ecPay\eInvoiceB2B\DTO\AllowanceItemDto;
-use ecPay\eInvoiceB2B\DTO\ItemCollection;
-use ecPay\eInvoiceB2B\Parameter\TaxType;
+use CarlLee\EcPayB2B\Content;
+use CarlLee\EcPayB2B\DTO\AllowanceItemDto;
+use CarlLee\EcPayB2B\DTO\ItemCollection;
+use CarlLee\EcPayB2B\Parameter\TaxType;
 use Exception;
 
 /**

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\DTO\AllowanceItemDto;
-use ecPay\eInvoiceB2B\Operations\Allowance;
-use ecPay\eInvoiceB2B\Parameter\TaxType;
+use CarlLee\EcPayB2B\DTO\AllowanceItemDto;
+use CarlLee\EcPayB2B\Operations\Allowance;
+use CarlLee\EcPayB2B\Parameter\TaxType;
 use PHPUnit\Framework\TestCase;
 
 class AllowanceTest extends TestCase

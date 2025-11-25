@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\Contracts;
+namespace CarlLee\EcPayB2B\Contracts;
 
-use ecPay\eInvoiceB2B\Infrastructure\PayloadEncoder;
+use CarlLee\EcPayB2B\Infrastructure\PayloadEncoder;
 
 /**
  * 封裝對 EcPay API 的命令介面。

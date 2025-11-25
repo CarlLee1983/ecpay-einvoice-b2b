@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Operations\AllowanceInvalid;
-use ecPay\eInvoiceB2B\Parameter\B2BInvoiceCategory;
-use ecPay\eInvoiceB2B\Parameter\InvalidReason;
+use CarlLee\EcPayB2B\Operations\AllowanceInvalid;
+use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
+use CarlLee\EcPayB2B\Parameter\InvalidReason;
 use PHPUnit\Framework\TestCase;
 
 class AllowanceInvalidTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Printing\InvoicePrint;
+use CarlLee\EcPayB2B\Printing\InvoicePrint;
 use PHPUnit\Framework\TestCase;
 
 class InvoicePrintTest extends TestCase

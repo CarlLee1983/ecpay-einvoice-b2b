@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use ecPay\eInvoiceB2B\DTO\InvoiceItemDto;
-use ecPay\eInvoiceB2B\EcPayClient;
-use ecPay\eInvoiceB2B\Operations\Issue;
-use ecPay\eInvoiceB2B\Parameter\ExchangeMode;
-use ecPay\eInvoiceB2B\Parameter\InvType;
-use ecPay\eInvoiceB2B\Parameter\TaxType;
-use ecPay\eInvoiceB2B\Request;
+use CarlLee\EcPayB2B\DTO\InvoiceItemDto;
+use CarlLee\EcPayB2B\EcPayClient;
+use CarlLee\EcPayB2B\Operations\Issue;
+use CarlLee\EcPayB2B\Parameter\ExchangeMode;
+use CarlLee\EcPayB2B\Parameter\InvType;
+use CarlLee\EcPayB2B\Parameter\TaxType;
+use CarlLee\EcPayB2B\Request;
 
 // 測試環境設定
 $server = 'https://einvoice-stage.ecpay.com.tw';

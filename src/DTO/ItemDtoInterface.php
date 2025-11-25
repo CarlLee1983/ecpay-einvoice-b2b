@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ecPay\eInvoiceB2B\DTO;
+namespace CarlLee\EcPayB2B\DTO;
 
 /**
  * 商品項目的最小介面。

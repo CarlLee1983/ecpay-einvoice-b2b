@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Parameter\InvoiceCategory;
-use ecPay\eInvoiceB2B\Parameter\InvoiceTerm;
-use ecPay\eInvoiceB2B\Parameter\InvType;
-use ecPay\eInvoiceB2B\Parameter\UseStatus;
-use ecPay\eInvoiceB2B\Queries\GetInvoiceWordSetting;
+use CarlLee\EcPayB2B\Parameter\InvoiceCategory;
+use CarlLee\EcPayB2B\Parameter\InvoiceTerm;
+use CarlLee\EcPayB2B\Parameter\InvType;
+use CarlLee\EcPayB2B\Parameter\UseStatus;
+use CarlLee\EcPayB2B\Queries\GetInvoiceWordSetting;
 use PHPUnit\Framework\TestCase;
 
 class GetInvoiceWordSettingTest extends TestCase

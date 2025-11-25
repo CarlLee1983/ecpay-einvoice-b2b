@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\DTO\InvoiceItemDto;
-use ecPay\eInvoiceB2B\Operations\Issue;
-use ecPay\eInvoiceB2B\Parameter\ExchangeMode;
-use ecPay\eInvoiceB2B\Parameter\InvType;
-use ecPay\eInvoiceB2B\Parameter\SpecialTaxType;
-use ecPay\eInvoiceB2B\Parameter\TaxType;
-use ecPay\eInvoiceB2B\Parameter\ZeroTaxRate;
+use CarlLee\EcPayB2B\DTO\InvoiceItemDto;
+use CarlLee\EcPayB2B\Operations\Issue;
+use CarlLee\EcPayB2B\Parameter\ExchangeMode;
+use CarlLee\EcPayB2B\Parameter\InvType;
+use CarlLee\EcPayB2B\Parameter\SpecialTaxType;
+use CarlLee\EcPayB2B\Parameter\TaxType;
+use CarlLee\EcPayB2B\Parameter\ZeroTaxRate;
 use PHPUnit\Framework\TestCase;
 
 class IssueTest extends TestCase

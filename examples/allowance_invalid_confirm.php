@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use ecPay\eInvoiceB2B\EcPayClient;
-use ecPay\eInvoiceB2B\Operations\AllowanceInvalidConfirm;
-use ecPay\eInvoiceB2B\Parameter\ConfirmAction;
-use ecPay\eInvoiceB2B\Request;
+use CarlLee\EcPayB2B\EcPayClient;
+use CarlLee\EcPayB2B\Operations\AllowanceInvalidConfirm;
+use CarlLee\EcPayB2B\Parameter\ConfirmAction;
+use CarlLee\EcPayB2B\Request;
 
 // 測試環境設定
 $server = 'https://einvoice-stage.ecpay.com.tw';

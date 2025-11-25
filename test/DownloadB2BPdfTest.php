@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ecPay\eInvoiceB2B\Printing\DownloadB2BPdf;
+use CarlLee\EcPayB2B\Printing\DownloadB2BPdf;
 use PHPUnit\Framework\TestCase;
 
 class DownloadB2BPdfTest extends TestCase
