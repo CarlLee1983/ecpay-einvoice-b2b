@@ -13,18 +13,13 @@ use CarlLee\EcPayB2B\Exceptions\PayloadException;
 class PayloadEncoder
 {
     /**
-     * @var CipherService
-     */
-    private CipherService $cipherService;
-
-    /**
      * __construct
      *
      * @param CipherService $cipherService
      */
-    public function __construct(CipherService $cipherService)
-    {
-        $this->cipherService = $cipherService;
+    public function __construct(
+        private readonly CipherService $cipherService,
+    ) {
     }
 
     /**

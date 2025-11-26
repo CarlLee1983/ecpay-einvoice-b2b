@@ -46,7 +46,11 @@
         "squizlabs/php_codesniffer": "^4.0"
     },
     "scripts": {
-        "test": "phpunit",
+        "test": "phpunit --testsuite unit",
+        "test:unit": "phpunit --testsuite unit",
+        "test:integration": "phpunit --testsuite integration",
+        "test:legacy": "phpunit --testsuite legacy",
+        "test:all": "phpunit --testsuite all",
         "phpcs": "phpcs",
         "phpcbf": "phpcbf"
     },

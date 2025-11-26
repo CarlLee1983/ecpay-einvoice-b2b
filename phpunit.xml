@@ -1,15 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit colors="true" bootstrap="vendor/autoload.php">
+<phpunit
+    colors="true"
+    bootstrap="vendor/autoload.php"
+    cacheDirectory=".phpunit.cache"
+    executionOrder="depends,defects"
+    beStrictAboutOutputDuringTests="true"
+>
     <testsuites>
-        <testsuite name="ECPay eInvoice B2B test">
+        <!-- 單元測試：不需要網路，可快速執行 -->
+        <testsuite name="unit">
+            <directory>test/Unit</directory>
+        </testsuite>
+
+        <!-- 整合測試：需要網路連線，會呼叫 ECPay 測試伺服器 -->
+        <testsuite name="integration">
+            <directory>test/Integration</directory>
+        </testsuite>
+
+        <!-- Laravel 測試 -->
+        <testsuite name="laravel">
+            <directory>test/Laravel</directory>
+        </testsuite>
+
+        <!-- 舊版測試（包含整合測試，將逐步遷移） -->
+        <testsuite name="legacy">
+            <directory>test</directory>
+            <exclude>test/Unit</exclude>
+            <exclude>test/Integration</exclude>
+            <exclude>test/Laravel</exclude>
+        </testsuite>
+
+        <!-- 全部測試 -->
+        <testsuite name="all">
             <directory>test</directory>
         </testsuite>
     </testsuites>
+
     <php>
+        <!-- ECPay 測試環境設定 -->
         <env name="SERVER" value="https://einvoice-stage.ecpay.com.tw"/>
         <env name="MERCHANT_ID" value="2000132"/>
         <env name="HASH_KEY" value="ejCk326UnaZWKisg"/>
         <env name="HASH_IV" value="q9jcZX8Ib9LM8wYk"/>
         <env name="UNIFIED_BUSINESS_NO" value="97025978"/>
     </php>
+
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
 </phpunit>

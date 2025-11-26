@@ -12,24 +12,16 @@ use CarlLee\EcPayB2B\Exceptions\EncryptionException;
 class CipherService
 {
     /**
-     * @var string
-     */
-    private string $hashKey;
-
-    /**
-     * @var string
-     */
-    private string $hashIV;
-
-    /**
      * __construct
      *
      * @param string $hashKey
      * @param string $hashIV
      * @throws EncryptionException
      */
-    public function __construct(string $hashKey, string $hashIV)
-    {
+    public function __construct(
+        private readonly string $hashKey,
+        private readonly string $hashIV,
+    ) {
         if ($hashKey === '') {
             throw EncryptionException::invalidKey('HashKey');
         }
@@ -37,9 +29,6 @@ class CipherService
         if ($hashIV === '') {
             throw EncryptionException::invalidKey('HashIV');
         }
-
-        $this->hashKey = $hashKey;
-        $this->hashIV = $hashIV;
     }
 
     /**
