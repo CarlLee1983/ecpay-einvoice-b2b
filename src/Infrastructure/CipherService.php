@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CarlLee\EcPayB2B\Infrastructure;
 
-use Exception;
+use CarlLee\EcPayB2B\Exceptions\EncryptionException;
 
 /**
  * 專責處理 AES 加解密。
@@ -14,27 +14,28 @@ class CipherService
     /**
      * @var string
      */
-    private $hashKey;
+    private string $hashKey;
 
     /**
      * @var string
      */
-    private $hashIV;
+    private string $hashIV;
 
     /**
      * __construct
      *
      * @param string $hashKey
      * @param string $hashIV
+     * @throws EncryptionException
      */
     public function __construct(string $hashKey, string $hashIV)
     {
         if ($hashKey === '') {
-            throw new Exception('HashKey is empty.');
+            throw EncryptionException::invalidKey('HashKey');
         }
 
         if ($hashIV === '') {
-            throw new Exception('HashIV is empty.');
+            throw EncryptionException::invalidKey('HashIV');
         }
 
         $this->hashKey = $hashKey;
@@ -45,7 +46,7 @@ class CipherService
      * 進行 AES/CBC/PKCS7 加密。
      *
      * @param string $data
-     * @throws Exception
+     * @throws EncryptionException
      * @return string
      */
     public function encrypt(string $data): string
@@ -59,7 +60,7 @@ class CipherService
         );
 
         if ($encrypted === false) {
-            throw new Exception('Encryption failed.');
+            throw EncryptionException::encryptionFailed();
         }
 
         return \base64_encode($encrypted);
@@ -69,18 +70,18 @@ class CipherService
      * 進行 AES/CBC/PKCS7 解密。
      *
      * @param string $data
-     * @throws Exception
+     * @throws EncryptionException
      * @return string
      */
     public function decrypt(string $data): string
     {
         if ($data === '') {
-            throw new Exception('Decryption failed.');
+            throw EncryptionException::decryptionFailed('資料為空');
         }
 
         $decoded = \base64_decode($data, true);
         if ($decoded === false) {
-            throw new Exception('Decryption failed.');
+            throw EncryptionException::decryptionFailed('Base64 解碼失敗');
         }
 
         $decrypted = \openssl_decrypt(
@@ -92,7 +93,7 @@ class CipherService
         );
 
         if ($decrypted === false) {
-            throw new Exception('Decryption failed.');
+            throw EncryptionException::decryptionFailed('AES 解密失敗');
         }
 
         return $decrypted;

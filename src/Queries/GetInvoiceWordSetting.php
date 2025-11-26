@@ -25,7 +25,7 @@ class GetInvoiceWordSetting extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetInvoiceWordSetting';
+    protected string $requestPath = '/B2BInvoice/GetInvoiceWordSetting';
 
     /**
      * Initialize request payload.

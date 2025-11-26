@@ -30,7 +30,7 @@ class Issue extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/Issue';
+    protected string $requestPath = '/B2BInvoice/Issue';
 
     /**
      * 商品集合。

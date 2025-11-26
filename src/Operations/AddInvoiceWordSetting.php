@@ -28,7 +28,7 @@ class AddInvoiceWordSetting extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/AddInvoiceWordSetting';
+    protected string $requestPath = '/B2BInvoice/AddInvoiceWordSetting';
 
     /**
      * 新增字軌時允許的期別（不含 0 全部）。

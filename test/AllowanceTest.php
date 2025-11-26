@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace CarlLee\EcPayB2B\Tests;
+
+use Exception;
+use ReflectionClass;
 use CarlLee\EcPayB2B\DTO\AllowanceItemDto;
 use CarlLee\EcPayB2B\Operations\Allowance;
 use CarlLee\EcPayB2B\Parameter\TaxType;

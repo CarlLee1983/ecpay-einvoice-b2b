@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CarlLee\EcPayB2B;
 
-use Exception;
+use CarlLee\EcPayB2B\Exceptions\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
@@ -30,21 +30,21 @@ class Request
      *
      * @var string
      */
-    protected $url = '';
+    protected string $url = '';
 
     /**
      * The request body content.
      *
-     * @var array
+     * @var array<string, mixed>
      */
-    protected $content = [];
+    protected array $content = [];
 
     /**
      * The HTTP client instance.
      *
-     * @var Client
+     * @var Client|null
      */
-    protected static $client;
+    protected static ?Client $client = null;
 
     /**
      * 是否啟用 SSL 驗證（正式環境建議啟用）。
@@ -77,7 +77,7 @@ class Request
      * __construct
      *
      * @param string $url
-     * @param array $content
+     * @param array<string, mixed> $content
      */
     public function __construct(string $url = '', array $content = [])
     {
@@ -92,9 +92,9 @@ class Request
      * 並確保使用 TLS 1.1 以上的加密通訊協定。
      *
      * @param string $url
-     * @param array $content
-     * @throws Exception
-     * @return array
+     * @param array<string, mixed> $content
+     * @throws ApiException
+     * @return array<string, mixed>
      */
     public function send(string $url = '', array $content = []): array
     {
@@ -121,10 +121,13 @@ class Request
             if ($exception->hasResponse()) {
                 $response = $exception->getResponse();
 
-                throw new Exception($response->getBody()->getContents());
+                throw ApiException::requestFailed(
+                    $response->getBody()->getContents(),
+                    $exception
+                );
             }
 
-            throw new Exception('Request Error: ' . $exception->getMessage());
+            throw ApiException::requestFailed($exception->getMessage(), $exception);
         }
     }
 

@@ -24,7 +24,7 @@ class GetAllowanceConfirm extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetAllowanceConfirm';
+    protected string $requestPath = '/B2BInvoice/GetAllowanceConfirm';
 
     /**
      * Initialize request payload.

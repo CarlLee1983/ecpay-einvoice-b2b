@@ -23,7 +23,7 @@ class DownloadB2BPdf extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/DownloadB2BPdf';
+    protected string $requestPath = '/B2BInvoice/DownloadB2BPdf';
 
     /**
      * Initialize request payload.

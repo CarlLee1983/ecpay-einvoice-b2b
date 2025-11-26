@@ -26,7 +26,7 @@ class AllowanceInvalid extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/AllowanceInvalid';
+    protected string $requestPath = '/B2BInvoice/AllowanceInvalid';
 
     /**
      * Initialize request payload.

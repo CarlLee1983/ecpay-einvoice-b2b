@@ -30,7 +30,7 @@ class MaintainMerchantCustomerData extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/MaintainMerchantCustomerData';
+    protected string $requestPath = '/B2BInvoice/MaintainMerchantCustomerData';
 
     /**
      * Initialize request payload.

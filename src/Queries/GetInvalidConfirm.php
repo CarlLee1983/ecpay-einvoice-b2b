@@ -24,7 +24,7 @@ class GetInvalidConfirm extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetInvalidConfirm';
+    protected string $requestPath = '/B2BInvoice/GetInvalidConfirm';
 
     /**
      * Initialize request payload.

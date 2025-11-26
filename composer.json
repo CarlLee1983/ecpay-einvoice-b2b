@@ -29,6 +29,11 @@
             "CarlLee\\EcPayB2B\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "CarlLee\\EcPayB2B\\Tests\\": "test"
+        }
+    },
     "require": {
         "php": "^8.3",
         "guzzlehttp/guzzle": "^7.0"

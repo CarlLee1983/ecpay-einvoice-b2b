@@ -28,7 +28,7 @@ class Allowance extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/Allowance';
+    protected string $requestPath = '/B2BInvoice/Allowance';
 
     /**
      * 商品集合。

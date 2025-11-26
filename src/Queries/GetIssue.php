@@ -24,7 +24,7 @@ class GetIssue extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetIssue';
+    protected string $requestPath = '/B2BInvoice/GetIssue';
 
     /**
      * Initialize request payload.

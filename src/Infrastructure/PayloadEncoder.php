@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace CarlLee\EcPayB2B\Infrastructure;
 
-use Exception;
+use CarlLee\EcPayB2B\Exceptions\ApiException;
+use CarlLee\EcPayB2B\Exceptions\PayloadException;
 
 /**
  * 將領域資料轉換為傳輸格式並提供解碼功能。
@@ -14,7 +15,7 @@ class PayloadEncoder
     /**
      * @var CipherService
      */
-    private $cipherService;
+    private CipherService $cipherService;
 
     /**
      * __construct
@@ -29,19 +30,19 @@ class PayloadEncoder
     /**
      * 將內容轉成 ECPay 要求的傳輸格式。
      *
-     * @param array $payload
-     * @throws Exception
-     * @return array
+     * @param array<string, mixed> $payload
+     * @throws PayloadException
+     * @return array<string, mixed>
      */
     public function encodePayload(array $payload): array
     {
         if (!isset($payload['Data'])) {
-            throw new Exception('The payload structure is invalid.');
+            throw PayloadException::missingData();
         }
 
         $encodedData = json_encode($payload['Data']);
         if ($encodedData === false) {
-            throw new Exception('The invoice data format is invalid.');
+            throw PayloadException::invalidData('JSON 編碼失敗');
         }
 
         $encodedData = urlencode($encodedData);
@@ -56,8 +57,8 @@ class PayloadEncoder
      * 將回傳的 Data 還原為陣列欄位。
      *
      * @param string $encryptedData
-     * @throws Exception
-     * @return array
+     * @throws ApiException
+     * @return array<string, mixed>
      */
     public function decodeData(string $encryptedData): array
     {
@@ -66,7 +67,7 @@ class PayloadEncoder
 
         // PHP 8.3: 使用 json_validate() 先驗證 JSON 格式
         if (!json_validate($urlDecoded)) {
-            throw new Exception('The response data format is invalid.');
+            throw ApiException::invalidResponse('回應資料 JSON 格式無效');
         }
 
         return json_decode($urlDecoded, true);
@@ -76,7 +77,6 @@ class PayloadEncoder
      * 與 .NET 相容的 URL encode 轉換。
      *
      * @param string $param
-     * @throws Exception
      * @return string
      */
     private function transUrlencode(string $param): string

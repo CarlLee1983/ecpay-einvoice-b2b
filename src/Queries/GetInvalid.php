@@ -24,7 +24,7 @@ class GetInvalid extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetInvalid';
+    protected string $requestPath = '/B2BInvoice/GetInvalid';
 
     /**
      * Initialize request payload.

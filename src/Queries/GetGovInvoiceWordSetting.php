@@ -23,7 +23,7 @@ class GetGovInvoiceWordSetting extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetGovInvoiceWordSetting';
+    protected string $requestPath = '/B2BInvoice/GetGovInvoiceWordSetting';
 
     /**
      * Initialize request payload.

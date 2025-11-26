@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CarlLee\EcPayB2B;
 
+use CarlLee\EcPayB2B\Exceptions\EncryptionException;
 use CarlLee\EcPayB2B\Infrastructure\CipherService;
-use Exception;
 
 /**
  * AES encryption and decryption.
@@ -34,15 +34,17 @@ trait AES
 
     /**
      * 建立 CipherService 實例，確保金鑰存在。
+     *
+     * @throws EncryptionException
      */
     private function createCipherService(): CipherService
     {
         if (!property_exists($this, 'hashKey') || empty($this->hashKey)) {
-            throw new Exception('HashKey is empty.');
+            throw EncryptionException::invalidKey('HashKey');
         }
 
         if (!property_exists($this, 'hashIV') || empty($this->hashIV)) {
-            throw new Exception('HashIV is empty.');
+            throw EncryptionException::invalidKey('HashIV');
         }
 
         return new CipherService($this->hashKey, $this->hashIV);

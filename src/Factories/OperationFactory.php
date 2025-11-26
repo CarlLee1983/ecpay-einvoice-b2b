@@ -15,7 +15,7 @@ class OperationFactory implements OperationFactoryInterface
     /**
      * Content 相關類別的基底命名空間。
      */
-    private const BASE_NAMESPACE = 'ecPay\\eInvoiceB2B';
+    private const BASE_NAMESPACE = 'CarlLee\\EcPayB2B';
 
     /**
      * 未指定群組時預設使用 Operations。

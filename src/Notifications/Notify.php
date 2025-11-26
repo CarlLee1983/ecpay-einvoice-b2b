@@ -26,7 +26,7 @@ class Notify extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/Notify';
+    protected string $requestPath = '/B2BInvoice/Notify';
 
     /**
      * Initialize request payload.

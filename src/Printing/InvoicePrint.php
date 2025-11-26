@@ -21,7 +21,7 @@ class InvoicePrint extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/InvoicePrint';
+    protected string $requestPath = '/B2BInvoice/InvoicePrint';
 
     /**
      * Initialize request payload.

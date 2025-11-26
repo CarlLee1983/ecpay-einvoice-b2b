@@ -24,7 +24,7 @@ class GetReject extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetReject';
+    protected string $requestPath = '/B2BInvoice/GetReject';
 
     /**
      * Initialize request payload.

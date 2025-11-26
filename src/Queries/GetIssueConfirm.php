@@ -24,7 +24,7 @@ class GetIssueConfirm extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetIssueConfirm';
+    protected string $requestPath = '/B2BInvoice/GetIssueConfirm';
 
     /**
      * Initialize request payload.

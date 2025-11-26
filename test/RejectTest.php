@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace CarlLee\EcPayB2B\Tests;
+
+use Exception;
+use ReflectionClass;
 use CarlLee\EcPayB2B\Operations\Reject;
 use CarlLee\EcPayB2B\Parameter\B2BInvoiceCategory;
 use PHPUnit\Framework\TestCase;

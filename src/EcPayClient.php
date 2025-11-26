@@ -5,42 +5,37 @@ declare(strict_types=1);
 namespace CarlLee\EcPayB2B;
 
 use CarlLee\EcPayB2B\Contracts\CommandInterface;
+use CarlLee\EcPayB2B\Exceptions\ApiException;
+use CarlLee\EcPayB2B\Exceptions\EcPayException;
 use CarlLee\EcPayB2B\Infrastructure\CipherService;
 use CarlLee\EcPayB2B\Infrastructure\PayloadEncoder;
-use Exception;
 
 class EcPayClient
 {
     /**
      * The request server.
-     *
-     * @var string
      */
-    protected $requestServer = '';
+    protected string $requestServer = '';
 
     /**
      * Hash key.
-     *
-     * @var string
      */
-    protected $hashKey = '';
+    protected string $hashKey = '';
 
     /**
      * Hash IV.
-     *
-     * @var string
      */
-    protected $hashIV = '';
+    protected string $hashIV = '';
 
     /**
-     * @var CipherService
+     * Cipher service for encryption/decryption.
      */
-    protected $cipherService;
+    protected CipherService $cipherService;
 
     /**
-     * @var PayloadEncoder
+     * Payload encoder for encoding/decoding.
      */
-    protected $payloadEncoder;
+    protected PayloadEncoder $payloadEncoder;
 
     /**
      * __construct
@@ -48,6 +43,7 @@ class EcPayClient
      * @param string $server
      * @param string $hashKey
      * @param string $hashIV
+     * @param PayloadEncoder|null $payloadEncoder
      */
     public function __construct(
         string $server,
@@ -68,7 +64,8 @@ class EcPayClient
      *
      * @param CommandInterface $command
      * @return Response
-     * @throws Exception
+     * @throws EcPayException
+     * @throws ApiException
      */
     public function send(CommandInterface $command): Response
     {

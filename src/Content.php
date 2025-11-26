@@ -6,9 +6,10 @@ namespace CarlLee\EcPayB2B;
 
 use CarlLee\EcPayB2B\Contracts\CommandInterface;
 use CarlLee\EcPayB2B\DTO\RqHeaderDto;
+use CarlLee\EcPayB2B\Exceptions\EncryptionException;
+use CarlLee\EcPayB2B\Exceptions\ValidationException;
 use CarlLee\EcPayB2B\Infrastructure\CipherService;
 use CarlLee\EcPayB2B\Infrastructure\PayloadEncoder;
-use Exception;
 
 abstract class Content implements InvoiceInterface, CommandInterface
 {
@@ -29,49 +30,49 @@ abstract class Content implements InvoiceInterface, CommandInterface
      *
      * @var string
      */
-    protected $requestServer = '';
+    protected string $requestServer = '';
 
     /**
      * The request path.
      *
      * @var string
      */
-    protected $requestPath = '';
+    protected string $requestPath = '';
 
     /**
      * The content merchant id.
      *
      * @var string
      */
-    protected $merchantID = '';
+    protected string $merchantID = '';
 
     /**
-     * Hash key;
+     * Hash key.
      *
      * @var string
      */
-    protected $hashKey = '';
+    protected string $hashKey = '';
 
     /**
      * Hash IV.
      *
      * @var string
      */
-    protected $hashIV = '';
+    protected string $hashIV = '';
 
     /**
      * The Response instance.
      *
      * @var Response
      */
-    public $response;
+    public Response $response;
 
     /**
      * The content.
      *
-     * @var array
+     * @var array<string, mixed>
      */
-    protected $content = [];
+    protected array $content = [];
 
     /**
      * @var RqHeaderDto
@@ -81,7 +82,7 @@ abstract class Content implements InvoiceInterface, CommandInterface
     /**
      * @var PayloadEncoder|null
      */
-    protected $payloadEncoder;
+    protected ?PayloadEncoder $payloadEncoder = null;
 
     /**
      * __construct
@@ -222,11 +223,12 @@ abstract class Content implements InvoiceInterface, CommandInterface
      *
      * @param string $relateNumber
      * @return $this
+     * @throws ValidationException
      */
     public function setRelateNumber(string $relateNumber): self
     {
         if (strlen($relateNumber) > self::RELATE_NUMBER_MAX_LENGTH) {
-            throw new Exception('The invoice RelateNumber length over ' . self::RELATE_NUMBER_MAX_LENGTH . '.');
+            throw ValidationException::tooLong('RelateNumber', self::RELATE_NUMBER_MAX_LENGTH);
         }
 
         $this->content['Data']['RelateNumber'] = $relateNumber;
@@ -239,6 +241,7 @@ abstract class Content implements InvoiceInterface, CommandInterface
      *
      * @param string $date
      * @return $this
+     * @throws ValidationException
      */
     public function setInvoiceDate(string $date): self
     {
@@ -246,7 +249,7 @@ abstract class Content implements InvoiceInterface, CommandInterface
         $dateTime = \DateTime::createFromFormat($format, $date);
 
         if (!($dateTime && $dateTime->format($format) === $date)) {
-            throw new Exception('The invoice date format is invalid.');
+            throw ValidationException::invalid('InvoiceDate', '格式必須為 yyyy-mm-dd');
         }
 
         $this->content['Data']['InvoiceDate'] = $date;
@@ -310,21 +313,22 @@ abstract class Content implements InvoiceInterface, CommandInterface
     /**
      * Validator base parameters.
      *
-     * @throws Exception
+     * @throws ValidationException
+     * @throws EncryptionException
      */
-    protected function validatorBaseParam(bool $requireCredentials = false)
+    protected function validatorBaseParam(bool $requireCredentials = false): void
     {
         if (empty($this->content['MerchantID']) || empty($this->content['Data']['MerchantID'])) {
-            throw new Exception('MerchantID is empty.');
+            throw ValidationException::required('MerchantID');
         }
 
         if ($requireCredentials) {
             if (empty($this->hashKey)) {
-                throw new Exception('HashKey is empty.');
+                throw EncryptionException::invalidKey('HashKey');
             }
 
             if (empty($this->hashIV)) {
-                throw new Exception('HashIV is empty.');
+                throw EncryptionException::invalidKey('HashIV');
             }
         }
     }

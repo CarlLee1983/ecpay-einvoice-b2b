@@ -24,7 +24,7 @@ class IssueConfirm extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/IssueConfirm';
+    protected string $requestPath = '/B2BInvoice/IssueConfirm';
 
     /**
      * Initialize request payload.

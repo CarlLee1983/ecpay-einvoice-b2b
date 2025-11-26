@@ -24,7 +24,7 @@ class RejectConfirm extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/RejectConfirm';
+    protected string $requestPath = '/B2BInvoice/RejectConfirm';
 
     /**
      * Initialize request payload.

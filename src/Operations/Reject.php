@@ -26,7 +26,7 @@ class Reject extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/Reject';
+    protected string $requestPath = '/B2BInvoice/Reject';
 
     /**
      * Initialize request payload.

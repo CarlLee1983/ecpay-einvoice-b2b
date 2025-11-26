@@ -24,7 +24,7 @@ class UpdateInvoiceWordStatus extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/UpdateInvoiceWordStatus';
+    protected string $requestPath = '/B2BInvoice/UpdateInvoiceWordStatus';
 
     /**
      * Initialize request payload.

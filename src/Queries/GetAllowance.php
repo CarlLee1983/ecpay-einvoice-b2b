@@ -24,7 +24,7 @@ class GetAllowance extends Content
      *
      * @var string
      */
-    protected $requestPath = '/B2BInvoice/GetAllowance';
+    protected string $requestPath = '/B2BInvoice/GetAllowance';
 
     /**
      * Initialize request payload.
