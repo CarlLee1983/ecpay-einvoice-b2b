@@ -43,7 +43,7 @@ class Allowance extends Content
      * @return void
      */
     #[\Override]
-    protected function initContent()
+    protected function initContent(): void
     {
         $this->items = new ItemCollection();
 
@@ -283,7 +283,7 @@ class Allowance extends Content
      * @return void
      */
     #[\Override]
-    public function validation()
+    protected function validation(): void
     {
         $this->validatorBaseParam();
 

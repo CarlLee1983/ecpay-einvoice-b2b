@@ -112,6 +112,16 @@ final class InvoiceItemDto implements ItemDtoInterface
     }
 
     /**
+     * 轉換為陣列（實作 ItemDtoInterface）。
+     *
+     * @return array<string,mixed>
+     */
+    public function toArray(): array
+    {
+        return $this->toPayload();
+    }
+
+    /**
      * 轉為 API 需要的欄位結構。
      *
      * @return array<string,mixed>

@@ -31,7 +31,7 @@ class DownloadB2BPdf extends Content
      * @return void
      */
     #[\Override]
-    protected function initContent()
+    protected function initContent(): void
     {
         $this->content['Data'] = [
             'MerchantID' => $this->merchantID,
@@ -86,7 +86,7 @@ class DownloadB2BPdf extends Content
      * @return void
      */
     #[\Override]
-    public function validation()
+    protected function validation(): void
     {
         $this->validatorBaseParam();
 
