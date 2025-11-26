@@ -7,24 +7,42 @@
 
 ## [Unreleased]
 
+---
+
+## [1.1.0] - 2025-11-26
+
 ### 新增
 - **自訂例外類別層級**
   - `EcPayException` - 基礎例外類別，包含 context 功能
-  - `ValidationException` - 參數驗證失敗例外
-  - `EncryptionException` - AES 加解密失敗例外
+  - `ValidationException` - 參數驗證失敗例外（含靜態工廠方法）
+  - `EncryptionException` - AES 加解密失敗例外（含靜態工廠方法）
   - `ApiException` - API 請求/回應錯誤例外
   - `PayloadException` - Payload 結構/資料無效例外
+  - `ConfigurationException` - 設定相關例外
 - **Response 類別新增便利方法**
   - `isSuccess()` - `success()` 的別名
   - `isError()` - 檢查是否為錯誤回應
   - `getCode()` - 取得回應代碼（RtnCode）
   - `toArray()` - 轉換為陣列
   - `throw()` - 若為錯誤則拋出 `ApiException`
+- **測試結構改善**
+  - 新增 `test/Unit/UnitTestCase.php` 單元測試基類
+  - 新增 `test/Integration/IntegrationTestCase.php` 整合測試基類
+  - 新增 `test/Laravel/` 目錄
 
 ### 變更
 - **測試檔案加入 namespace** - 所有測試類別現在位於 `CarlLee\EcPayB2B\Tests` 命名空間
-- **統一 PHP 8 typed properties** - 所有屬性皆使用現代 PHP 型別宣告
-- **更新 composer.json** - 新增 `autoload-dev` 設定
+- **統一 PHP 8.3 現代語法**
+  - 所有屬性使用 typed properties
+  - Infrastructure 類別使用 constructor property promotion
+  - 實作介面方法加入 `#[\Override]` 屬性
+- **更新 composer.json**
+  - 新增 `autoload-dev` 設定
+  - 新增測試腳本：`test:unit`, `test:integration`, `test:legacy`, `test:all`
+- **更新 phpunit.xml**
+  - 新增 unit/integration/legacy/all 測試套件
+  - 加入 PHPUnit 10 現代設定選項
+- **PayloadEncoder 使用 PHP 8.3 json_validate()** - 改善 JSON 驗證效能
 
 ### 修正
 - **修正 OperationFactory BASE_NAMESPACE** - 修正工廠類別的命名空間常數為正確的 `CarlLee\EcPayB2B`
@@ -36,6 +54,7 @@
   - `Request` → 使用 `ApiException`
   - `Content` → 使用 `ValidationException`, `EncryptionException`
   - `AES` trait → 使用 `EncryptionException`
+- 與 B2C 專案架構同步，提升程式碼一致性
 
 ---
 
@@ -131,7 +150,8 @@
 
 ---
 
-[Unreleased]: https://github.com/CarlLee1983/ecpay-einvoice-B2B/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/CarlLee1983/ecpay-einvoice-B2B/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/CarlLee1983/ecpay-einvoice-B2B/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/CarlLee1983/ecpay-einvoice-B2B/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/CarlLee1983/ecpay-einvoice-B2B/releases/tag/v0.1.0
 
